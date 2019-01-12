@@ -1,0 +1,42 @@
+(def defn (vau defn [env args]
+               (eval `(def ~(first args)
+                        (fn ~@args)))))
+
+(defn ffirst [x]
+  (first (first x)))
+
+(defn nnext [x]
+  (next (next x)))
+
+(def defvau (vau defvau [env args]
+                 (eval `(def ~(first args)
+                          (vau ~@args)))))
+
+(defvau when [env args]
+  (if (eval env (first args))
+    (eval env `(do ~@(next args)))
+    nil))
+
+
+(defn -cond-body [env clauses]
+  (let [test (first clauses)
+        expr2 (second clauses)]
+    (println "TEST EXPR " test expr2)
+    (if (seq clauses)
+      (if (eval env test)
+        (eval env expr2)
+        (-cond-body env (next (next clauses))))
+      nil)))
+
+(defvau cond [env clauses]
+        (-cond-body env clauses))
+
+(defn -and-body [env clauses]
+  (if (seq clauses)
+    (if (eval env (first clauses))
+      (-and-body env (next clauses))
+      false)
+    true))
+
+(defvau and [env clauses]
+        (-and-body env clauses))
