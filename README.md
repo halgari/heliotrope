@@ -1,8 +1,7 @@
 # heliotrope
 A lisp, written in Clojure, designed for exploring how languages like [Pink](https://github.com/namin/pink) can be extended with
 features of other lisps. So far these extensions include multi-argument functions (vs curried functions), and fexprs. Fexprs can
-be viewed as a mini-interpreter that ingests sexprs and interprets them. Using the concepts described in this [paper] 
-(http://lampwww.epfl.ch/~amin/pub/collapsing-towers.pdf) the overhead of fexprs can be removed during runtime. The tests show an
+be viewed as a mini-interpreter that ingests sexprs and interprets them. Using the concepts described in this [paper](http://lampwww.epfl.ch/~amin/pub/collapsing-towers.pdf) the overhead of fexprs can be removed during runtime. The tests show an
 example of this behavior: 
 
 ```clojure
