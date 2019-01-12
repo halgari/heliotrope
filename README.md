@@ -28,4 +28,4 @@ example of this behavior:
 ```
 
 
-Note: this repository is mostly a place for me to hack on new interpreter ideas. The code is ugly and highly inefficent. 
+Note: this repository is mostly a place for me to hack on new interpreter ideas. The code is ugly and highly inefficient. 
